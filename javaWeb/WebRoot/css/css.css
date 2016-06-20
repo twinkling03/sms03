@@ -1,0 +1,106 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.loginbg{
+	background-image: url("../images/bg2.png");
+
+}
+
+a:hover, a:link{
+	cursor: pointer;
+}
+
+.login{
+	width: 480px;
+	margin-left:600px;
+	margin-top:300px;
+	padding-left:40px;
+	text-align: left;
+}
+
+.stu_list{
+	border: 1px soild gray;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.stu_list tr:nth-child(even){	
+	background-color: aqua;
+}
+
+#stus_div{
+	clear: both;
+	margin-top:30px;
+}
+
+#menu{
+	width:980px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#menu>ul{
+	float: left;
+	width:150px;
+	height:20px;
+	list-style-type:none;
+	margin-right:5px;
+	margin-top:5px;
+	display:block;
+	border:1px soild gray;
+	background-image: url("../images/mbg.png");
+}
+#menu ul li{
+	margin-top: 2px;
+}
+
+h1{
+	z-index: -1;
+}
+
+
+#menu>ul>li>ul>li{
+	background-color: #AED;
+	margin-top: 1px;
+	z-index:1;
+}
+
+ul li{
+	list-style-type: none;
+	text-align:center;
+	vertical-align: center;
+}
+
+
+.item-selected{
+	background-color: lime;
+}
+
+
+
+.btn{
+	width:90px;
+}
+
+img {
+	border: 0px;
+}
+.btnlogin{
+	width:90px;
+	
+}
+
+.input {
+	width: 190px;
+	border: 0px;
+	border-bottom: 1px  gray solid; 
+}
+
+#content{
+	width: 480px;
+	margin-left: auto;
+	margin-right: auto;
+}
+

@@ -1,0 +1,239 @@
+http://183.230.44.67:7001/(zy0jn555dr24fkuthiyp3245)/js_main.aspx?xh=002103#a
+
+Java学习笔记
+ 
+ java是一种OOP（面向对象）编程语言，类似C#。 java的源代码是以.java结尾， java程序
+ 是运行在JVM（java 虚拟机）之上，JVM只认识字节码（bytecode），类似与CPU只认识二进制一样
+ ，所以java源代码需要通过javac（java compiler）之后生成的.class文件（字节码文件）。
+ 
+ 在java语言中估计程序员编写自己的类型，（在java中有两种数据类型，从大的方面说，第一种是基本数据类型，包括：
+ byte-8, short-16, int-32, long-64, float-32,double-64, bool-8, char-16,
+  第二种就是除开第一种之外的所有的其他的类型都是引用数据类型--对象。）
+
+基本数据类型在程序执行的时候由jvm去分配内存空间，存放在stack（栈）中，速度比较快。引用数据类型（对象）由
+jvm分配在heap（堆）的一块内存空间中。
+
+在java中，一个public的类只能定义在跟他同名的.java文件中。一个文件中可以定义很多其他的非public类。
+
+在java中有四种访问权限修饰符（public, protected, package/friendly/default/不加认可关键字的情况， 
+private）
+
+package的访问修饰符意味这只能被同一个package或者说同一个文件夹下面的其他java类使用。
+protected： 除了具有package访问权限之外，还能被他的子类使用，（子类可以在不同的package中）
+
+类（class是一个模板，通常是指一种具有相同特征的一种概念。），对象（非常具体的个体）
+接口（Interface就是一种规则，大家需要去遵守。）
+
+解决一个问题的复杂度取决于你对问题的抽象程度（你如果把他当回事儿，那就是一会儿事儿，同理，反之亦然。）
+
+
+对象是有生命周期的（由jvm去实例化，new 加构造方法， 同时在heap堆上分配内存空间，当jvm-gc垃圾收集机制回收该
+对象所占用的heap中的内存空间时，该对象消亡。）
+ Student zhangsan=new Student();
+ Student lisi=zhangsan;
+ 这里的zhangsan是一个对象（其实本质上也只是一个变量，类似int age=1;中的a）
+ 这里的等号（赋值符号）除了赋值的功能外，还有另外一个隐含的含义：两边的数据类型要相同，或者后边数据的类型能转化为
+ 左边的类型。
+ long a=age;
+ age=(int)a;
+ ========
+ 假如有两个类，一个Person， 一个是Student（Student extends Person）
+ Person p=null;
+ p=zhangsan; //子类赋值给父类变量的情况称为向上造型
+ lisi=(Student)p;//反之，把父类的实例变量赋值给子类的时候必须要强制类型转化。
+====================================================
+方法的重载（overload）：在一个类中定义的多个同名不同参数（个数不同，位置不同，参数数据类型不同）的方法：一个
+典型的使用场景就是我们的构造方法。
+方法的重写（overite）：指子类（实现类）定义了父类（接口）中申明的方法。方法名相同，参数也必须相同。（求面积的情况）
+
+构造方法（默认的情况下，JVM 会自动提供一个public的无参数的构造方法，一旦我们自己定义了构造方法，默认的就不生效了，
+且在构造方法中还可以使用this（...）调用当前类的其他构造方法，同理可以使用super（...）调用父类的构造方法）
+
+万物皆对象（Object）（基本数据类型通常我们并不把他叫做对象，基本数据类型都有他们的包装类型。（byte-Byte, 
+short-Short, int-Integer, long-Long, float-Float,double-Double, 
+bool-Boolean, char-Character）
+=======================================================
+OOP(特征：1.封装，2，继承，3，多态)
+1.封装--意味着隐藏一些东西，其目的就是让一些数据或者功能不被别人所使用（4种权限修饰符以及作用域/范围），比如数据类型
+  int定义了一个取值范围以及在该范围上的操作1+2
+  Student
+  对象（是属性和行为的封装）
+2. 继承---是对数据或者功能的复用（is-a）  （接口-like -a）
+3. 多态--（延迟绑定---运行时动态绑定--同一个功能作用不同类型的对象具有不同结果---方法的重写）
+
+什么是重写：在子类或实现类里边重新实现父类或接口里边的方法，其特征：定义在不同的类种，方法体不同，方法名和参数相同的方法
+
+没有方法体的方法就是抽象方法，且必须定义在抽象（abstract）类或者接口（interface）中。
+从语法的角度讲：抽象类里边可以有抽象方法和普通方法。接口中定义的方法默认是抽象方法，且不能定义普通方法。
+抽象类一般情况是需要被子类继承（extends）， 而接口是必须通过实现类来实现接口中的抽象方法。
+
+一个类extends后边只能有一个直接的父类，但是一个类可以实现（implements）多个接口
+一个接口可以extends多个其他接口。
+=================================================
+异常：
+在java中的异常分为两类且都是throwable的子类：
+1. error----不需要也不应该被catch
+2. exception---需要也应该被catch，可以继续通过方法后边加throws抛出由调用方处理，如果被catch，应该是
+先catch子类，后catch父类。
+语法上讲：一个try可以由0个或多个catch和0个或1个finally构成完整的代码块。
+如果catch中有return/throw语句，finally语句中的代码在return之前会被执行， system.exit(0);除外
+注意如果需要在catch中抛出异常可以用throw关键字去声明。
+
+注意，java中定义常量用关键字final，常量意味着不能够再次赋值；常量可以在构造方法中赋值还可以在静态代码块中给与赋值。
+=符号就是赋值，什么叫初始化，就是在定义一个变量或者常量的时候给赋值就是初始化。
+==================================================
+注意：静态代码块static{}或者静态方法比如main（）中如果要直接调用方法或变量，那么这个被调用的方法或者变量也
+必须是static
+什么static，如果一个类中定义了static的变量或者方法，那么不需要通过new 去实例化一个对象，可以直接通过类名加点直接
+使用。所以通常我们把静态的变量或者方法叫做类变量/类方法。而非static的方法和变量称为实例变量或方法。
+=====================================================
+在java中要实现类似多继承的功能，可以通过接口interface来达到目的
+
+================================================
+在java中存放单个数据可以通过定义变量，如果要存放多个数据，可以通过数组（[]/Array）或者集合（Collection）
+数组（Array）是通过type[]，数组的长度是不变的，如果定义了一个大数组，就可能造成内存资源的浪费，
+如果需要访问数组里边的元素（element），是通过数组下标（0~length-1）,超出范围会出现ArrayIndexOutOfBoundsException
+
+集合框架（Collection Framework）--root interface--->collection
+其中比较重要的接口有：
+1。List----> ArrayList,LinkedList
+2。 Map--->	HashMap,TreeMap,Hashtable
+3. Set--> HashSet,TreeSet
+
+hashtable 不允许null key 和null value， 还是线程同步的
+hashmap  允许null key 和null value，且不是线程同步的
+
+boolean add(E e) 
+Ensures that this collection contains the specified element (optional operation). 
+boolean addAll(Collection<? extends E> c) 
+Adds all of the elements in the specified collection to this collection (optional operation). 
+void clear() 
+Removes all of the elements from this collection (optional operation). 
+boolean contains(Object o) 
+Returns true if this collection contains the specified element. 
+boolean containsAll(Collection<?> c) 
+Returns true if this collection contains all of the elements in the specified collection. 
+boolean equals(Object o) 
+Compares the specified object with this collection for equality. 
+int hashCode() 
+Returns the hash code value for this collection. 
+boolean isEmpty() 
+Returns true if this collection contains no elements. 
+Iterator<E> iterator() 
+Returns an iterator over the elements in this collection. 
+boolean remove(Object o) 
+Removes a single instance of the specified element from this collection, if it is present (optional operation). 
+boolean removeAll(Collection<?> c) 
+Removes all of this collection's elements that are also contained in the specified collection (optional operation). 
+boolean retainAll(Collection<?> c) 
+Retains only the elements in this collection that are contained in the specified collection (optional operation). 
+int size() 
+Returns the number of elements in this collection. 
+Object[] toArray() 
+Returns an array containing all of the elements in this collection. 
+<T> T[] toArray(T[] a) 
+Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array. 
+
+java编程：（IDE-->Eclipse，JDK--->(Javac,java),API--application programming interface）
+	
+==================================
+java线程（thread）
+实现多线程有几种方式：
+1. extends Thread
+2. implements Runnable
+
+线程有几中状态：
+一. 线程状态类型
+ 1. 新建状态（New）：新创建了一个线程对象。
+ 2. 就绪状态（Runnable）：线程对象创建后，其他线程调用了该对象的start()方法。该状态的线程位于可运行线程池中，变得可运行，等待获取CPU的使用权。
+ 3. 运行状态（Running）：就绪状态的线程获取了CPU，执行程序代码。
+ 4. 阻塞状态（Blocked）：阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况分三种：
+ （一）、等待阻塞：运行的线程执行wait()方法，JVM会把该线程放入等待池中。
+ （二）、同步阻塞：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则JVM会把该线程放入锁池中。
+ （三）、其他阻塞：运行的线程执行sleep()或join()方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。
+ 5. 死亡状态（Dead）：线程执行完了或者因异常退出了run()方法，该线程结束生命周期。
+
+
+
+==============================================
+JSP :
+
+主要是编写serverlet
+Application
+applet
+
+工具：Eclipse+tomcat
+
+tomcat目录结构
+---\bin---->服务启动程序
+	\conf--->server配置文件
+	\lib---->server库
+	\logs---->server日志（排错主要看log）
+	\temp---->server临时文件
+	\webapps--->网站代码目录
+	\work--->server 运行时工作的目录，比如代码文件编译后或者war解压后及JSP编译都在这里
+
+
+在Eclipse部署web程序到tomcat中：
+web项目点右键 run as -->MyEclipse Server Application-->tomcat6.0
+
+
+jsp解决中文乱码：
+response.setCharacterEncoding("UTF-8");
+
+
+JSP项目下比较重要的目录
+web-inf/web.xml 这个文件是整个项目的配置文件，比如servlet就是配置在这个xml中，
+	
+查看数据库端口有没有开启1433
+netstat -an | find "1433"
+打开数据库配置管理工具， 网络配置->mssqlserver协议->TCP/IP 启用
+restart service
+教师机（服务器->属性->安全性->OS and SQL authenticate）
+
+backup DB :
+Student-->任务-->备份-->F:\javaWeb\WebRoot\DB_BAK\student
+
+启动/停止 MSSQLSERVER service
+
+net start/stop mssqlserver
+
+JSP页面在第一次部署到web 容器由容器编译成class，
+	JSP===Servlet
+	
+	Student zhangsan=new Student();
+	
+自己编写的servlet java类需要在web.xml文件中配置
+<servlet>
+    <servlet-name>xxx</servlet-name>
+    <servlet-class>com.javaweb.LoginServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>xxx</servlet-name>
+    <url-pattern>/servlet/xx/login</url-pattern>
+  </servlet-mapping>
+  
+http/https
+http:特征：断开式的连接，并且无状态的
+JSP为了解决无状态的问题提供了几种对象可以在多个页面之间进行数据共享
+page, request, session, application
+存数据：setAttribute("name",data);
+取数据：Object o=getAttribute("name");
+
+数据库的访问：JDBC
+1. 把数据库的驱动jar包放进build path (放进WEB-INF/lib)
+2. 加载数据库驱动：Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+3. 创建数据库连接：DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=student","sa","123");
+4. 创建语句对象： conn.statement()/conn.prepareStatement("select ....");
+5. 执行运行语句： pstmt.executeQuery(); pstmt.executeUpdate();
+6. 对结果进行处理 resultset /rs.next()/ rs.getXXX(1/"NAME");
+7. 关闭资源： pstmt.close();conn.close();
+
+==========================================
+Browser/Server(Tomcat/jetty/weblogic/webspare/jboss)
+MVC(M-->Modual,V-view, C-controller)
+代码实现方式：
+
+servlet->service(interface/impl)->dao(interface/impl)
+
+一个好的类或者一个好的方法应该是高内聚，低耦合（一个类或者一个方法应该尽可能的简单，只完成一件事情）

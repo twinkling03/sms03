@@ -1,0 +1,95 @@
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#menu>ul").mouseover(function(){
+				$("#menu>ul>li").next("li").hide();
+				
+				$(this).children("li").last().show();
+			});
+			$("#menu>ul>li>ul").mouseout(function(){
+				$("#menu>ul>li").next("li").hide();
+			});
+			
+			$("#menu>ul>li>ul>li").mouseover(function(){
+				$(this).toggleClass("item-selected");
+			});
+			
+	
+		});
+		
+	
+	</script>
+	</head>
+	
+	
+	<body>
+
+
+<div id="menu">
+	<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+
+	</ul>
+	
+	<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+
+	</ul>
+	
+	<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+	</ul>
+		<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+	</ul>
+		<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+	</ul>
+		<ul>
+		<li>Student Mange</li>
+		<li style="display: none;">
+			<ul>
+				<li><a href="">Add New Student</a></li>
+				<li><a href="">Query All Student</a></li>
+				<li><a href="">Delete  Student</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<br/>

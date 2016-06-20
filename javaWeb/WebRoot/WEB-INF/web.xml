@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!-- Serlvet配置开始 -->
+	  <servlet>
+	    <servlet-name>xxx</servlet-name>
+	    <servlet-class>com.javaweb.servlet.LoginServlet</servlet-class>
+	  </servlet>
+	  <servlet>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <servlet-class>com.javaweb.servlet.ManageStudent</servlet-class>
+	  </servlet>
+
+	  <servlet-mapping>
+	    <servlet-name>xxx</servlet-name>
+	    <url-pattern>/servlet/login</url-pattern>
+	  </servlet-mapping>
+	  <servlet-mapping>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <url-pattern>/servlet/xx/FindAllStudent</url-pattern>
+	  </servlet-mapping>
+	  <servlet-mapping>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <url-pattern>/servlet/xx/DeleteStudent</url-pattern>
+	  </servlet-mapping>
+	   <servlet-mapping>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <url-pattern>/servlet/xx/UpdateStudent</url-pattern>
+	  </servlet-mapping>
+	   <servlet-mapping>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <url-pattern>/servlet/xx/SaveStudent</url-pattern>
+	  </servlet-mapping>
+	  <servlet-mapping>
+	    <servlet-name>ManageStudent</servlet-name>
+	    <url-pattern>/servlet/xx/CheckExistForStuNo</url-pattern>
+	  </servlet-mapping>
+	  <!-- Serlvet配置结束 -->
+	  
+	  <!-- 过滤器配置开始 -->
+	  <filter>
+	  	<filter-name>loginFilter</filter-name>
+	  	<filter-class>com.javaweb.servlet.filter.LoginFilter</filter-class>
+	  </filter>
+	  
+	  <filter-mapping>
+	  	<filter-name>loginFilter</filter-name>
+	  	<url-pattern>/servlet/xx/*</url-pattern>
+	  </filter-mapping>
+	  
+	   <!-- 过滤器配置结束 -->
+	  
+	  <welcome-file-list>
+	    <welcome-file>login.jsp</welcome-file>
+	  </welcome-file-list>
+</web-app>
